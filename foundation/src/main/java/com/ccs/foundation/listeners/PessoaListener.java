@@ -18,7 +18,7 @@ public class PessoaListener {
     @PostUpdate
     @PostPersist
     public void publishEvent(Pessoa pessoa) {
-        rabbitTemplate.convertAndSend(foundationConstants.getPessoaRoutingKey(), pessoa);
+        rabbitTemplate.convertAndSend(foundationConstants.getPessoaRoutingKey(),pessoa);
     }
 
 }

@@ -28,4 +28,9 @@ public class Pessoa {
     private OffsetDateTime dataCriacao;
     @UpdateTimestamp
     private OffsetDateTime dataAtualizacao;
+
+    public Pessoa(String nome, String email) {
+        this.nome = nome;
+        this.email = email;
+    }
 }

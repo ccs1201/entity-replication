@@ -13,7 +13,7 @@ public class PessoaListener {
 
     private final PessoaRepository pessoaRepository;
 
-    @RabbitListener(queues = "beneficios.pessoa")
+    @RabbitListener(queues = "fnd.pessoa.beneficios")
     public void onEventPessoa(Pessoa pessoa) {
         pessoaRepository.save(pessoa);
     }

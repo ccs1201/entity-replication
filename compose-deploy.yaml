@@ -1,0 +1,107 @@
+name: entity-replication
+
+services:
+  postgres:
+    image: 'postgres:16-alpine3.20'
+    restart: no
+    hostname: 'postgres'
+    environment:
+      - 'POSTGRES_DB=entity-replication'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=postgres'
+    ports:
+      - '5432:5432'
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: '512MB'
+    networks:
+      - entity-replication
+
+
+  rabbitmq:
+    image: 'rabbitmq:3.13.6-management-alpine'
+    restart: no
+    hostname: 'rabbitmq'
+    environment:
+      - 'RABBITMQ_DEFAULT_PASS=guest'
+      - 'RABBITMQ_DEFAULT_USER=guest'
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      timeout: 5s
+      interval: 2s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: '512MB'
+    ports:
+      - '15672:15672'
+    networks:
+      - entity-replication
+
+  foundation:
+    image: 'csouza-foundation'
+    restart: no
+    hostname: 'foundation'
+    environment:
+      spring.profiles.active: prod
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      postgres:
+        condition: service_started
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: '512MB'
+    ports:
+      - '8080:8080'
+    networks:
+      - entity-replication
+
+  beneficios:
+    image: 'csouza-beneficios'
+    restart: no
+    hostname: 'beneficios'
+    environment:
+      spring.profiles.active: prod
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      postgres:
+        condition: service_started
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: '512MB'
+    networks:
+      - entity-replication
+
+
+  vendas:
+    image: 'csouza-vendas'
+    restart: no
+    hostname: 'vendas'
+    environment:
+      spring.profiles.active: prod
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+      postgres:
+        condition: service_started
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: '512MB'
+    networks:
+      - entity-replication
+
+networks:
+  entity-replication:
+    name: entity-replication

@@ -1,4 +1,4 @@
-package beneficios.entities;
+package vendas.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

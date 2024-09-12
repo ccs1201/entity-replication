@@ -1,11 +1,12 @@
 package com.ccs.foundation.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.ccs.foundation.listeners.PessoaListener;
+import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
@@ -14,7 +15,8 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Usuario {
+@EntityListeners(PessoaListener.class)
+public class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -22,4 +24,8 @@ public class Usuario {
     private UUID id;
     private String nome;
     private String email;
+    @CreationTimestamp
+    private OffsetDateTime dataCriacao;
+    @UpdateTimestamp
+    private OffsetDateTime dataAtualizacao;
 }

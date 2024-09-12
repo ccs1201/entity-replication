@@ -1,19 +1,21 @@
-package beneficios.listeners;
+package vendas.listeners;
 
 
-import beneficios.entities.Pessoa;
-import beneficios.respositories.PessoaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
+import vendas.configs.VendasConstants;
+import vendas.entities.Pessoa;
+import vendas.respositories.PessoaRepository;
 
 @Component
 @RequiredArgsConstructor
 public class PessoaListener {
 
     private final PessoaRepository pessoaRepository;
+    private final VendasConstants vendasConstants;
 
-    @RabbitListener(queues = "pessoa")
+    @RabbitListener(queues ="vendas.pessoa")
     public void onEventPessoa(Pessoa pessoa) {
         pessoaRepository.save(pessoa);
     }

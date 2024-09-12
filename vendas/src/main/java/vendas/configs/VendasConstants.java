@@ -6,12 +6,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @Getter
-public class BeneficiosConstants {
+public class VendasConstants {
 
     @Value("${foundation.exchange}")
     private String exchange;
 
-    @Value("${beneficios.pessoa.queue}")
+    @Value("${vendas.pessoa.queue}")
     private String pessoaQueue;
 
     @Value("${foundation.pessoa.key}")

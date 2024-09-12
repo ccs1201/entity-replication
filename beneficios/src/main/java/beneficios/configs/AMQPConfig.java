@@ -1,4 +1,4 @@
-package com.ccs.foundation.configs;
+package beneficios.configs;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -20,7 +20,7 @@ import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS
 @RequiredArgsConstructor
 public class AMQPConfig {
 
-    private final FoundationConstants foundationConstants;
+    private final BeneficiosConstants beneficiosConstants;
 
     @Bean
     ObjectMapper objectMapper() {
@@ -51,14 +51,14 @@ public class AMQPConfig {
     @Bean
     public Exchange exchange() {
         return ExchangeBuilder
-                .fanoutExchange(foundationConstants.getExchange())
+                .fanoutExchange(beneficiosConstants.getExchange())
                 .durable(true)
                 .build();
     }
 
     @Bean
     public Queue pessoaQueue() {
-        return QueueBuilder.durable(foundationConstants.getPessoaQueue())
+        return QueueBuilder.durable(beneficiosConstants.getPessoaQueue())
                 .build();
     }
 
@@ -66,7 +66,7 @@ public class AMQPConfig {
     public Binding pessoaBinding(Queue pessoaQueue, Exchange exchange) {
         return BindingBuilder.bind(pessoaQueue)
                 .to(exchange)
-                .with(foundationConstants.getPessoaQueue())
+                .with(beneficiosConstants.getPessoaRoutingKey())
                 .noargs();
     }
 }

@@ -2,6 +2,8 @@ package com.ccs.foundation.configs;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import lombok.RequiredArgsConstructor;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -15,7 +17,10 @@ import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS
 
 
 @Configuration
+@RequiredArgsConstructor
 public class AMQPConfig {
+
+    private final FoundationConstants foundationConstants;
 
     @Bean
     ObjectMapper objectMapper() {
@@ -41,5 +46,13 @@ public class AMQPConfig {
         factory.setMessageConverter(jackson2JsonMessageConverter);
         factory.setConnectionFactory(connectionFactory);
         return factory;
+    }
+
+    @Bean
+    public Exchange exchange() {
+        return ExchangeBuilder
+                .fanoutExchange(foundationConstants.getExchange())
+                .durable(true)
+                .build();
     }
 }

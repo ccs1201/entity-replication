@@ -1,6 +1,7 @@
-package com.ccs.foundation.respositories;
+package beneficios.respositories;
 
-import com.ccs.foundation.entities.Pessoa;
+
+import beneficios.entities.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

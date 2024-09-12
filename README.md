@@ -9,25 +9,25 @@
 * Docker
 
 ### # Qual o problema queremos resolver?
-* Um serviço que concentre os cadastros globais de nossa aplicação e que são necessários a outros módulos do sistema
+* Um serviço que concentre os cadastros globais de nossa aplicação e que são necessários a outros módulos do sistema.
 
 ### # Como resolvemos?
 * O serviço foundation é o ponto central para criação e atualização das entidades, sempre que evento deste tipo ocorrer (postPersist/posUpdate) uma mensagem é
 enviado para uma exchange **Fanout** no **RabbitMQ** por sua vez os serviços que precisam ser consumir estas entidades devem apenas implementar um listener que
-irá criar um **Queue** conectada a exchange *foundation.ex* utilizando a *routing-key* **fnd.pessoa** e com isto terá todas as entidades pessoas consistentes com
+irá criar um **Queue** conectada a exchange *foundation.ex* utilizando a *routing-key* **fnd.pessoa** e com isto terá todas as entidades pessoas consistentes
 com o serviço **foudation**.
 
 ### # Como Buildar e executar esta projeto
 
-* Tenha o docker instalado em sua maquina
+* Tenha o docker instalado em sua máquina.
 
-* Execute o arquivo **build_images.sh** Que executara os seguintes passos:
+* Execute o arquivo **build_images.sh** Que executará os seguintes passos:
 
         mvn clean package -DskipTests
         docker build /para criar a imagem de cada modulo/microserviço 
         mvn clean
         
-  * Após a conclusão do script execute o arquivo **compose-deploy.yaml** com o seguinte comando no terminal
+  * Após a conclusão do script execute o arquivo **compose-deploy.yaml** com o seguinte comando no terminal.
 
         docker-compose -f compose-deploy.yaml up
 
@@ -44,7 +44,7 @@ com o serviço **foudation**.
  }
 ```
 * O PostgreSQL ira expor a porta 5432
-* O RabbitMQ ira expor a porta 15672 para interface de administração que ficará acessível em localhost:15672 com **usuário=guest** e **senha=guest**
+* O RabbitMQ ira expor a porta 15672 para interface de administração que ficará acessível em *localhost:15672* com **usuário=guest** e **senha=guest**
 
 
 # Simple implementation demonstrating how we can use messaging to maintain consistency across multiple databases
@@ -68,7 +68,7 @@ com o serviço **foudation**.
 
 ### # How to build and run this project
 
-* Have a docker installed on your machine
+* Have a docker installed on your machine.
 
 * Run **build_images.sh** file. This will execute these steps:
 
@@ -93,5 +93,5 @@ com o serviço **foudation**.
  }
 ```
 
-* PostgreSQL will expose port 5432 to the host machine
-* RabbitMQ will expose port 15672 for the administration interface, which will be accessible at localhost:15672 with username=guest and password=guest
+* PostgreSQL will expose port 5432 to the host machine.
+* RabbitMQ will expose port 15672 for the administration interface, which will be accessible at *localhost:15672* with **username=guest** and **password=guest**.

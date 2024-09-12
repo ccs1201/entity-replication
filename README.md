@@ -24,7 +24,7 @@ com o serviço **foudation**.
 * Execute o arquivo **build_images.sh** Que executara os seguintes passos:
 
         mvn clean package -DskipTests
-        docker build para criar a imagem de cada modulo/microserviço 
+        docker build /para criar a imagem de cada modulo/microserviço 
         mvn clean
         
   * Após a conclusão do script execute o arquivo **compose-deploy.yaml** com o seguinte comando no terminal
@@ -73,7 +73,7 @@ com o serviço **foudation**.
 * Run **build_images.sh** file. This will execute these steps:
 
         mvn clean package -DskipTests
-        docker build para criar a imagem de cada modulo/microserviço 
+        docker build /to create image for each service 
         mvn clean
 
   * After the script is completed, run the compose-deploy.yaml file with the following command in terminal:
@@ -93,5 +93,5 @@ com o serviço **foudation**.
  }
 ```
 
-* O PostgresSQL ira expor a porta 5432 / PostgresSQL will expose port 5432
+* PostgresSQL will expose port 5432 to the host machine
 * RabbitMQ will expose port 15672 for the administration interface, which will be accessible at localhost:15672 with username=guest and password=guest

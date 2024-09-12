@@ -1,6 +1,7 @@
 name: entity-replication
 
 services:
+
   postgres:
     image: 'postgres:16-alpine3.20'
     restart: no
@@ -18,7 +19,6 @@ services:
           memory: '512MB'
     networks:
       - entity-replication
-
 
   rabbitmq:
     image: 'rabbitmq:3.13.6-management-alpine'
@@ -81,7 +81,6 @@ services:
           memory: '512MB'
     networks:
       - entity-replication
-
 
   vendas:
     image: 'csouza-vendas'

@@ -43,7 +43,7 @@ com o serviço **foudation**.
     "email": "teste@mail.com"
  }
 ```
-* O PostgresSQL ira expor a porta 5432
+* O PostgreSQL ira expor a porta 5432
 * O RabbitMQ ira expor a porta 15672 para interface de administração que ficará acessível em localhost:15672 com **usuário=guest** e **senha=guest**
 
 
@@ -93,5 +93,5 @@ com o serviço **foudation**.
  }
 ```
 
-* PostgresSQL will expose port 5432 to the host machine
+* PostgreSQL will expose port 5432 to the host machine
 * RabbitMQ will expose port 15672 for the administration interface, which will be accessible at localhost:15672 with username=guest and password=guest

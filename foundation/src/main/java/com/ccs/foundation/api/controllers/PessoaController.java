@@ -1,7 +1,7 @@
 package com.ccs.foundation.api.controllers;
 
-import com.ccs.foundation.api.controllers.models.input.PessoaInput;
-import com.ccs.foundation.api.controllers.models.output.PessoaOutput;
+import com.ccs.foundation.api.models.input.PessoaInput;
+import com.ccs.foundation.api.models.output.PessoaOutput;
 import com.ccs.foundation.entities.Pessoa;
 import com.ccs.foundation.respositories.PessoaRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/pessoas")
+@RequestMapping("/persons")
 @RequiredArgsConstructor
 public class PessoaController {
 

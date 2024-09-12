@@ -1,4 +1,4 @@
-package com.ccs.foundation.api.controllers.models.input;
+package com.ccs.foundation.api.models.input;
 
 import com.ccs.foundation.entities.Pessoa;
 

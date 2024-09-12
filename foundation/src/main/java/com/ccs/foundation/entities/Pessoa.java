@@ -25,6 +25,7 @@ public class Pessoa {
     private UUID id;
     private String nome;
     private String email;
+    private boolean ativo = true;
     @CreationTimestamp
     private OffsetDateTime dataCriacao;
     @UpdateTimestamp

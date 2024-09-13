@@ -13,7 +13,7 @@
 
 ### # Como resolvemos?
 * O serviço foundation é o ponto central para criação e atualização das entidades, sempre que evento deste tipo ocorrer (postPersist/posUpdate) uma mensagem é
-enviado para uma exchange **Fanout** no **RabbitMQ** por sua vez os serviços que precisam ser consumir estas entidades devem apenas implementar um listener que
+enviado para uma exchange **Topic** no **RabbitMQ** por sua vez os serviços que precisam ser consumir estas entidades devem apenas implementar um listener que
 irá criar um **Queue** conectada a exchange *foundation.ex* utilizando a *routing-key* **fnd.pessoa** e com isto terá todas as entidades pessoas consistentes
 com o serviço **foudation**.
 
@@ -62,7 +62,7 @@ com o serviço **foudation**.
 
 ### # How do we solve it?
 * The foundation service is the central point for creating and updating entities. Whenever such an event occurs (postPersist/postUpdate),
-  a message is sent to a **Fanout** exchange in **RabbitMQ**. The services that need to consume these entities should only implement a listener that
+  a message is sent to a **Topic** exchange in **RabbitMQ**. The services that need to consume these entities should only implement a listener that
   will create a **Queue** connected to the *Foundation.ex* exchange using the *routing-key* **fnd.pessoa**. This way, they will have all person entities
   consistent with the foundation service.
 

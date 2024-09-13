@@ -51,7 +51,7 @@ public class AMQPConfig {
     @Bean
     public Exchange exchange() {
         return ExchangeBuilder
-                .fanoutExchange(foundationConstants.getExchange())
+                .topicExchange(foundationConstants.getExchange())
                 .durable(true)
                 .build();
     }

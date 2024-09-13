@@ -11,8 +11,8 @@
 
     <artifactId>foundation</artifactId>
     <version>0.0.1</version>
-    <name>beneficios</name>
-    <description>beneficios</description>
+    <name>foundation</name>
+    <description>foundation</description>
 
     <properties>
         <java.version>21</java.version>

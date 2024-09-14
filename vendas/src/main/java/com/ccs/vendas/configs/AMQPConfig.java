@@ -1,4 +1,4 @@
-package vendas.configs;
+package com.ccs.vendas.configs;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -52,7 +52,7 @@ public class AMQPConfig {
     @Bean
     public Exchange exchange() {
         return ExchangeBuilder
-                .fanoutExchange(vendasConstants.getExchange())
+                .topicExchange(vendasConstants.getExchange())
                 .durable(true)
                 .build();
     }

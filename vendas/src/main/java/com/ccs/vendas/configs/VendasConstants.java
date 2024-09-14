@@ -1,4 +1,4 @@
-package vendas.configs;
+package com.ccs.vendas.configs;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,4 +1,4 @@
-package beneficios.configs;
+package com.ccs.beneficios.configs;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -51,7 +51,7 @@ public class AMQPConfig {
     @Bean
     public Exchange exchange() {
         return ExchangeBuilder
-                .fanoutExchange(beneficiosConstants.getExchange())
+                .topicExchange(beneficiosConstants.getExchange())
                 .durable(true)
                 .build();
     }

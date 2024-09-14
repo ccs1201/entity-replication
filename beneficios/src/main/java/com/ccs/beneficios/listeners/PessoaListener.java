@@ -1,12 +1,12 @@
-package vendas.listeners;
+package com.ccs.beneficios.listeners;
 
 
+import com.ccs.beneficios.entities.Pessoa;
+import com.ccs.beneficios.respositories.PessoaRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
-import vendas.entities.Pessoa;
-import vendas.respositories.PessoaRepository;
 
 @Component
 @RequiredArgsConstructor
@@ -15,7 +15,7 @@ public class PessoaListener {
 
     private final PessoaRepository pessoaRepository;
 
-    @RabbitListener(queues ="fnd.pessoa.vendas")
+    @RabbitListener(queues = "fnd.pessoa.beneficios")
     public void onEventPessoa(Pessoa pessoa) {
         pessoaRepository.save(pessoa);
         log.info("Pessoa salva com sucesso: {}", pessoa);

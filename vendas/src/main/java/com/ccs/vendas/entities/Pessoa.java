@@ -1,4 +1,4 @@
-package vendas.entities;
+package com.ccs.vendas.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

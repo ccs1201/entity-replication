@@ -1,4 +1,4 @@
-package beneficios.entities;
+package com.ccs.beneficios.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

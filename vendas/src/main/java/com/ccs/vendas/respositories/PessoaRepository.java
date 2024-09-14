@@ -1,9 +1,9 @@
-package vendas.respositories;
+package com.ccs.vendas.respositories;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import vendas.entities.Pessoa;
+import com.ccs.vendas.entities.Pessoa;
 
 import java.util.UUID;
 
